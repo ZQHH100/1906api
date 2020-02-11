@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   1906api
                 </div>
 
                 <div class="links">
