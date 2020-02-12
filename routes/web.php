@@ -19,3 +19,9 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
    phpinfo();
 });
+Route::prefix('/test')->group(function(){
+    Route::get('redis','TestController@testRedis');
+    Route::get('test002','TestController@test002');
+    Route::get('/test003','TestController@test003');
+});
+    
