@@ -20,5 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/api*',      //对api请求不使用csrf验证
+        '/test*',
     ];
 }

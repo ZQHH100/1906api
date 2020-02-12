@@ -24,4 +24,8 @@ Route::prefix('/test')->group(function(){
     Route::get('test002','TestController@test002');
     Route::get('/test003','TestController@test003');
 });
+Route::prefix('/api')->group(function(){
+    Route::get('/user/info','Api\UserController@info');
+    Route::post('/user/reg','Api\UserController@reg');
+});
     
