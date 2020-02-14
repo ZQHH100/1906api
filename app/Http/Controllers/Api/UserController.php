@@ -20,10 +20,7 @@ class UserController extends Controller
      }
      //用户注册
      public function reg(Request $request){
-        // $data = $request->input(); //接收数据
-        // $user_name = $request->input('user_name');
-        // echo 'user_name: '.$user_name;
-
+        
         $user_info = [
             'user_name' =>$request->input('user_name'),
             'email'     =>$request->input('email'),
