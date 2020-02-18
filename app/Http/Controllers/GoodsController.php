@@ -24,12 +24,12 @@ class GoodsController extends Controller
       }else{
           echo "无缓存:";echo "<br>";
           //求数据库中取数据,并保存到缓存中
-          $goods_info = GoodsModel::where(['id'=>$goods_id])->first();
+          $goods_info = GoodsModel::where(['goods_id'=>$goods_id])->first();
           $arr = $goods_info->toArray();
 
           $j_goods_info = json_encode($arr);
           Redis::set($goods_key,$j_goods_info);
-          Redis::expire($goods_key,5);
+          Redis::expire($goods_key,10);
           echo "<pre>";print_r($arr);echo "</pre>";
       }
 
