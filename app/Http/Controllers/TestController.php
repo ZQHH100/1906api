@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use GuzzleHttp\Client;
+
 class TestController extends Controller
 {
     public function testRedis(){
@@ -116,9 +117,33 @@ class TestController extends Controller
         $data = $response->getBody();
         echo $data;
     }
-    public function guzzle(){
+    
+    public function geturl(){
+        //协议 http https
+        $scheme = $_SERVER['REQUEST_SCHEME'];
+        //域名
+        $host = $_SERVER['HTTP_HOST'];
+        //请求uri
+        $uri =  $_SERVER['REQUEST_URI'];
+
+        $url =$scheme . '://'.$host.$uri;
+
+        echo '当前URL:'.$url;echo '<hr>';
+
         echo "<pre>";print_r($_SERVER);echo "</pre>";
     }
+
+    public function redisstr(){
+        $token = 'adadada';
+        $key = 'user_token';
+
+        //写入值
+        Redis::set($key,$token);
+        //设置过期时间
+        Redis::expire($key,30); //expire
+    }
+
+
     public function count1(){
       //使用UA识别用户
       $ua=$_SERVER['HTTP_USER_AGENT'];

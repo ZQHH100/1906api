@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
    phpinfo();
 });
-Route::prefix('/test')->group(function(){
+Route::prefix('/test')->middleware('apifilter')->group(function(){
     Route::get('redis','TestController@testRedis');
     Route::get('test002','TestController@test002');
     Route::get('/test003','TestController@test003');
@@ -28,8 +28,8 @@ Route::prefix('/test')->group(function(){
     Route::get('/curl2','TestController@curl2');
     Route::get('/guzzle1','TestController@guzzle1');
 
-    Route::get('/guzzle','TestController@guzzle');
-
+    Route::get('/geturl','TestController@geturl');
+    Route::get('/redisstr','TestController@redisstr');
     Route::get('/count1','TestController@count1');
 
     Route::get('/api2','TestController@api2');
