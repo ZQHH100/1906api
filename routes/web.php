@@ -28,9 +28,15 @@ Route::prefix('/test')->group(function(){
     Route::get('/curl2','TestController@curl2');
     Route::get('/guzzle1','TestController@guzzle1');
 
+    Route::get('/guzzle','TestController@guzzle');
+
 });
 Route::prefix('/api')->group(function(){
     Route::get('/user/info','Api\UserController@info');
     Route::post('/user/reg','Api\UserController@reg');
 });
+
+Route::get('/goods','GoodsController@goods');
+
+
     

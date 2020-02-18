@@ -116,4 +116,7 @@ class TestController extends Controller
         $data = $response->getBody();
         echo $data;
     }
+    public function guzzle(){
+        echo "<pre>";print_r($_SERVER);echo "</pre>";
+    }
 }
