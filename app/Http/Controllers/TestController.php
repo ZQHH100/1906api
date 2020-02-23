@@ -282,7 +282,8 @@ class TestController extends Controller
         echo "接收到的数据:";echo "<br>";
         echo "<pre>";print_r($_GET);echo "</pre>";
         $data = $_GET['data'];
-
+        
+        $enc_str = base64_decode($data);
         $dec_data = openssl_decrypt($enc_str,$method,$key,OPENSSL_RAW_DATA,$iv);
         echo "解密的数据:";echo "<br>";
         var_dump($dec_data);
@@ -304,7 +305,7 @@ class TestController extends Controller
 
   
         //将加密后的数据发送到decrypt2
-        $url = 'http://api.1906.com/test/decrypt2?data='.$enc_str;
+        $url = 'http://api.1906.com/decrypt2?data='.$base64_str;
         $response = file_get_contents($url);
         var_dump($response);
         // $ch=curl_init();
