@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
    phpinfo();
 });
+
+Route::get('/rsa/decrypt1','TestController@decrypt1');
 Route::prefix('/test')->middleware('apifilter')->group(function(){
     Route::get('redis','TestController@testRedis');
     Route::get('test002','TestController@test002');
