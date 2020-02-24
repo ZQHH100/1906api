@@ -317,9 +317,9 @@ class TestController extends Controller
        
     }
     public function decrypt1(){
-        echo "<hr>";
-        echo "这是api";
-        echo "<pre>";print_r($_GET);echo "</pre>";
+       // echo "<hr>";
+       // echo "这是api";
+        //echo "<pre>";print_r($_GET);echo "</pre>";
 
         //解密数据
         $enc_data = base64_decode($_GET['data']);
@@ -327,7 +327,21 @@ class TestController extends Controller
 
         $priv = file_get_contents(storage_path('keys/priv_a.key'));
         openssl_private_decrypt($enc_data,$dec_data,$priv);
-        echo "解密数据:";echo "<br>";
-        var_dump($dec_data);
+        //echo "解密数据:";echo "<br>";
+       
+
+        //数据响应
+        $str = "WDNMD";
+        $key =  file_get_contents(storage_path('keys/pub_b.key'));
+        openssl_public_encrypt($str,$enc_str,$key);
+        //echo "响应的加密数据:".$enc_str;echo "<br>";
+
+        $data = [
+            'errno' =>0,
+            'msg' =>'解密成功',
+            'data' => base64_encode($enc_str)
+        ];
+        //echo json_encode($data,JSON_UNESCAPED_UNICODE);
+        return $data;
     }
 }
